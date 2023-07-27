@@ -13,6 +13,7 @@ export async function GET(request)
         const user = await UserInfo.findOne({_id: userId}).select("-password");
         return NextResponse.json(
             { message: 'user found', data: user }
+            { headers: { "Cache-Control": "no-cache" } }
         )
     }
     catch(error)
